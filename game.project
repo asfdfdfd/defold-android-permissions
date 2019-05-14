@@ -1,0 +1,21 @@
+[bootstrap]
+main_collection = /main/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 960
+height = 640
+dynamic_orientation = 1
+
+[project]
+title = defold-android-permissions
+
+[android]
+package = com.asfdfdfd.defold.android.permissions
+manifest = /manifests/android/AndroidManifest.xml
+
+[library]
+include_dirs = android_permissions
+

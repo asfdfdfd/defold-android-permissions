@@ -1,0 +1,17 @@
+function init(self)	
+	if android_permissions then	
+		local permission_write_external_storage = "android.permission.WRITE_EXTERNAL_STORAGE"
+		local permission_read_contacts = "android.permission.READ_CONTACTS"
+		local permissions = {permission_write_external_storage, permission_read_contacts}
+
+		local is_permission_granted = android_permissions.is_permission_granted(permission_read_contacts)
+		print("Is " .. permission_read_contacts .. " granted: " .. tostring(is_permission_granted) .. ".")
+
+		android_permissions.request_permissions(permissions, function (results)
+			for permission, grant_result in pairs(results) do
+				print("Is " .. permission .. " granted: " .. tostring(grant_result == android_permissions.PERMISSION_GRANTED));
+				print("Should show request permission rationale for " .. permission .. ": " .. tostring(android_permissions.should_show_request_permission_rationale(permission)))
+			end
+		end)
+	end
+end
